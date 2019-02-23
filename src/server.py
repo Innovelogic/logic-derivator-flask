@@ -1,11 +1,12 @@
 import os , BooleanApplication
 from flask import Flask,render_template,json, request
+import hello
 
 from BooleanApplication import *
 
 app = Flask(__name__)
 
-UPLOAD_FOLDER = os.path.basename('uploads')
+UPLOAD_FOLDER = os.path.basename('static')
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/index')
@@ -46,11 +47,25 @@ def nlpUp():
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
-    file = request.files['image']
-    f = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
-    file.save(f)
 
-    return render_template('index.html')
+    try:
+        print("H0")
+        file = request.files['image']
+        print("H1")
+        f = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
+        print(f)
+        print("H2")
+        file.save(f)
+        print("H3")
+        os.system('python hello.py')
+        result = hello.vo
+        print(result)
+        print(file.filename)
+        return render_template('blog-single.html', result=[file.filename,result])
+        #return json.dumps({'results': results})
+        # return json.dumps({'message': 'User created successfully !'})
+    except Exception as e:
+        return json.dumps({'error': str(e)})
 
 if __name__ == "__main__":
     app.run()

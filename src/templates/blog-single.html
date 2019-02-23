@@ -15,7 +15,7 @@
 	<!-- meta character set -->
 	<meta charset="UTF-8">
 	<!-- Site Title -->
-	<title>Blog Details</title>
+	<title>Diagram Modelling</title>
 
 	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 	<!--
@@ -71,15 +71,15 @@
 			<div class="row d-flex align-items-center justify-content-center">
 				<div class="about-content col-lg-12">
 					<h1 class="text-white text-uppercase">
-						Blog Details
+						Diagram Modelling
 					</h1>
 					<p class="text-white link-nav"><a href="index.html">Home </a>
 						<span class="lnr lnr-arrow-right"></span>
 						<a href="blogHome">
-							Blog</a>
+							Modelling</a>
 						<span class="lnr lnr-arrow-right"></span>
 						<a href="blogSingle">
-							Blog Details</a>
+							Diagram Modelling</a>
 					</p>
 				</div>
 			</div>
@@ -101,10 +101,16 @@
 						</div>
 						<div class="col-lg-12 mt-30">
 							<div class="alert-msg" style="text-align: left;"></div>
-							<button class="primary-btn primary" style="float: right;" type ="submit">Generate</button>
-						</div>
+							    <button class="primary-btn primary" style="float: right;" type ="submit">Generate</button>
+						    </div>
+
 					</div>
 				</form>
+                {% if result is defined %}
+                    <img class="card-top-img" src="../static/{{result[0]}}"/>
+                    <h3><b>{{result[1]}}</b></h3>
+
+                {%endif%}
 
 			</div>
 		</div>
